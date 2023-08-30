@@ -2,42 +2,53 @@ package Lift;
 
 public class Elevator {
 
-        int currentFloor=10;
-        private int minFloor = 1;
-        private int maxFloor = 10;
+        private int currentFloor=1;
+        int minFloor ;
+        int maxFloor ;
 
-        //-Метод getCurrentFloor, возвращающий текущий этаж, на котором находится лифт.
-        public void getCurrentFloor() {
-            System.out.println("Вы находитесь на "+currentFloor+" этаже");
+    public Elevator(int minFloor, int maxFloor) {
+        this.minFloor = minFloor;
+        this.maxFloor = maxFloor;
+    }
+
+    //-Метод getCurrentFloor, возвращающий текущий этаж, на котором находится лифт.
+        private void getCurrentFloor() {
+            System.out.println(currentFloor+" этаж");
                     }
 
         //-Метод moveDown, перемещающий лифт на один этаж вниз (уменьшающий значение переменной currentFloor на единицу).
-        public int moveDown() {
-            return currentFloor--;
+        private void moveDown() {
+             currentFloor--;
+             if (currentFloor == 0){
+                 currentFloor--;
+             }
         }
         //-Метод moveUp, перемещающий лифт на один этаж вверх.
-        public int moveUp(){
-            return currentFloor++;
+        private void moveUp(){
+             currentFloor++;
+             if (currentFloor==0){
+                 currentFloor++;
+             }
         }
         //-Метод move(int floor), перемещающий лифт на заданный в параметре этаж, если он задан верно.
         //Если параметр у метода задан неверно, ничего не делать и выводить в консоль сообщение об ошибке.
         public void move(int floor){
-            if (floor>=minFloor && floor<=maxFloor){
+            if (floor>=minFloor && floor<=maxFloor && floor!=0) {
                 System.out.println("Поехали");
-                while (floor!=currentFloor){
-                    System.out.println(currentFloor+ " Этаж");
-                    if (floor>currentFloor) {
+                while (floor != currentFloor) {
+                    getCurrentFloor();
+                    if (floor > currentFloor) {
                         System.out.println("Идет вверх ");
-                        moveUp();}
-                    else {
+                        moveUp();
+                    } else {
                         System.out.println("Идет вниз ");
                         moveDown();
                     }
                 }
-                System.out.println(" Вы приехали " + currentFloor+ " этаж");
+                    System.out.println(" Вы приехали " + currentFloor + " этаж");
             }
             else {
-                System.out.println("Этаж задан неверно ввеите значение от 1-10");
+                System.out.println("Этаж задан неверно введите значение от " + minFloor + " до " + maxFloor);
             }
 
         }

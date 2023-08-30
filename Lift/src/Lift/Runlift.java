@@ -19,12 +19,37 @@ public class Runlift {
          public static void main (String[] args) throws InterruptedException {
 
             Scanner scanner = new Scanner(System.in);
-            System.out.println(" Добро Пожаловать!  ВВедите этаж ");
-            int floor = scanner.nextInt();
-            Elevator lift = new Elevator();
-            lift.getCurrentFloor();
-            lift.move(floor);
+            Elevator lift1 = new Elevator(-3,10);
+            Elevator lift2 = new Elevator(1,10);
+            Elevator lift3 = new Elevator(-2,12);
+            System.out.println(" Добро Пожаловать!");
+             System.out.println("Выберите номер Лифта 1,2,3");
+             int numer = scanner.nextInt();
+             if (numer>0 && numer<4) {
+                 System.out.println("ВВедите количество поездок");
+                 int kolvo = scanner.nextInt();
+                 for (int i = 0; i < kolvo; i++) {
+                     if (numer == 1) {
+                         System.out.println("Лифт1: Введите этаж: " + lift1.minFloor + " " + lift1.maxFloor);
+                         int floor = scanner.nextInt();
+                         lift1.move(floor);
+                     }
+                     if (numer == 2) {
+                         System.out.println("Лифт2: Введите этаж: " + lift2.minFloor + " " + lift2.maxFloor);
+                         int floor = scanner.nextInt();
+                         lift2.move(floor);
+                     }
+                     if (numer == 3) {
+                         System.out.println("Лифт3: Введите этаж: " + lift3.minFloor + " " + lift3.maxFloor);
+                         int floor = scanner.nextInt();
+                         lift3.move(floor);
+                     }
+                 }
+             }
+             else {
+                 System.out.println("Вы неверно ввели номер лифта. ");
 
-        }
+             }
     }
+}
 
